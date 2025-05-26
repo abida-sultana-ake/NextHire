@@ -135,7 +135,7 @@ const Register = () => {
 
           <button
             type="button"
-            className="w-full flex items-center justify-center p-2 bg-white text-black rounded"
+            className="w-full cursor-pointer flex items-center justify-center p-2 bg-white text-black rounded"
           >
             <FcGoogle className="w-5 h-5 mr-2" />
             Sign up with Google
@@ -143,7 +143,7 @@ const Register = () => {
 
           <button
             type="button"
-            className="w-full flex items-center justify-center p-2 bg-white text-black rounded"
+            className="w-full cursor-pointer flex items-center justify-center p-2 bg-white text-black rounded"
           >
             <FaApple className="w-5 h-5 mr-2" />
             Sign up with Apple
