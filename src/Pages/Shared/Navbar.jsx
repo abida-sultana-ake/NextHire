@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router"; 
 import { AuthContext } from "../../Context/Authcontext";
 import Swal from "sweetalert2";
 
@@ -48,12 +48,12 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/" className={({ isActive }) => (isActive ? "text-yellow-400" : "")}>
+        <NavLink to="/" className={({ isActive }) => isActive ? "text-yellow-400" : ""}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/about" className={({ isActive }) => (isActive ? "text-yellow-400" : "")}>
+        <NavLink to="/about" className={({ isActive }) => isActive ? "text-yellow-400" : ""}>
           About
         </NavLink>
       </li>
@@ -61,38 +61,49 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-gray-800 sticky top-0 shadow-sm z-10 text-white">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-              viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16" />
+    <div className="navbar bg-gray-800 text-white sticky top-0 z-50 shadow-sm">
+      <div className="flex-1">
+        <div className="dropdown lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round"
+                strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-          </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-10 mt-3 w-52 p-2 shadow">
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52"
+          >
             {links}
+            {user ? (
+              <li><button onClick={handleSignOut}>Sign Out</button></li>
+            ) : (
+              <>
+                <li><NavLink to="/register">Register</NavLink></li>
+                <li><NavLink to="/login">Login</NavLink></li>
+              </>
+            )}
           </ul>
         </div>
-        <NavLink to="/" className="btn btn-ghost text-xl">NextHire</NavLink>
+        <NavLink to="/" className="btn btn-ghost normal-case text-xl">NextHire</NavLink>
       </div>
 
-      <div className="navbar-center hidden lg:flex">
+      <div className="hidden lg:flex flex-1 justify-center">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      <div className="navbar-end space-x-2">
+      <div className="hidden lg:flex items-center space-x-2">
         {user ? (
-          <button className="btn" onClick={handleSignOut}>Sign Out</button>
+          <button className="btn btn-sm" onClick={handleSignOut}>Sign Out</button>
         ) : (
           <>
-            <NavLink to="/register" className="btn">Register</NavLink>
-            <NavLink to="/login" className="btn">Login</NavLink>
+            <NavLink to="/register" className="btn btn-sm">Register</NavLink>
+            <NavLink to="/login" className="btn btn-sm">Login</NavLink>
           </>
         )}
 
-        <label className="flex cursor-pointer gap-2">
+        <label className="flex cursor-pointer items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
             viewBox="0 0 24 24" fill="none" stroke="currentColor"
             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -101,8 +112,7 @@ const Navbar = () => {
           </svg>
           <input
             type="checkbox"
-            value="dark"
-            className="toggle theme-controller mr-6"
+            className="toggle theme-controller"
             checked={theme === "dark"}
             onChange={handleThemeChange}
           />
