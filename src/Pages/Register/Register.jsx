@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaApple } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { NavLink } from "react-router";
@@ -12,6 +12,8 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  const { signInWithGoogle, createUser } = useContext(AuthContext);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -31,7 +33,23 @@ const Register = () => {
     }
   };
 
-  const { createUser } = use(AuthContext);
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        Swal.fire({
+          icon: "success",
+          title: "Google Sign-In Successful",
+          text: `Welcome, ${result.user.email}`,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Google Sign-In Failed",
+          text: error.message,
+        });
+      });
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -40,9 +58,8 @@ const Register = () => {
     const password = form.password.value;
     const name = form.name.value;
     const country = form.country.value;
-    console.log(name, country, email, password);
+    console.log(name, country)
 
-    //createUser
     createUser(email, password)
       .then((result) => {
         Swal.fire({
@@ -94,7 +111,7 @@ const Register = () => {
               className="w-full sm:w-1/2 p-2 rounded bg-gray-700 text-white"
               required
             >
-              <option>Choose a country</option>
+              <option value="">Choose a country</option>
               <option>USA</option>
               <option>UK</option>
               <option>Canada</option>
@@ -135,6 +152,7 @@ const Register = () => {
 
           <button
             type="button"
+            onClick={handleGoogleSignIn}
             className="w-full cursor-pointer flex items-center justify-center p-2 bg-white text-black rounded"
           >
             <FcGoogle className="w-5 h-5 mr-2" />
