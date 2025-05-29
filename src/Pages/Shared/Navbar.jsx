@@ -61,7 +61,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-gray-800 text-white sticky top-0 z-50 shadow-sm">
+    <div className="navbar bg-gray-800 text-white sticky top-0  shadow-sm">
       <div className="flex-1">
         <div className="dropdown lg:hidden">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -89,7 +89,7 @@ const Navbar = () => {
         <NavLink to="/" className="btn btn-ghost normal-case text-xl">NextHire</NavLink>
       </div>
 
-      <div className="hidden lg:flex flex-1 justify-center">
+      <div className="hidden lg:flex flex-1 justify-between">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
