@@ -5,6 +5,7 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Terms from "../Pages/Conditions/Terms";
 import Privacy from "../Pages/Conditions/Privacy";
+import OpenJob from "../Pages/Shared/OpenJob";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,23 +14,29 @@ const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        element: <Home/>
+        element: <Home />,
       },
       {
         path: "/register",
-        element: <Register/>
+        element: <Register />,
       },
       {
         path: "/login",
-        element: <Login/>
+        element: <Login />,
       },
       {
         path: "/terms",
-        element: <Terms/>
+        element: <Terms />,
       },
       {
         path: "/privacy",
-        element: <Privacy/>
+        element: <Privacy />,
+      },
+      {
+        path: "/openJob/:id",
+        element: <OpenJob />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/jobs/${params.id}`),
       },
     ],
   },

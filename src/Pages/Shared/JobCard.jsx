@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar, FaMapMarkerAlt } from "react-icons/fa";
+import { NavLink } from "react-router";
 
 const JobCard = ({ job }) => {
   const { title, location, rating, reviews, openJobs, company_logo } = job;
@@ -29,9 +30,11 @@ const JobCard = ({ job }) => {
         <span>{location}</span>
       </div>
 
-      <p className="text-sm text-blue-600 font-medium dark:text-blue-400">
+      <NavLink to="/openJob" className="text-sm text-blue-600 font-medium dark:text-blue-400">
+        <a >
         {openJobs} Open Jobs
-      </p>
+      </a>
+      </NavLink>
     </div>
   );
 };
