@@ -73,7 +73,7 @@ const Login = () => {
     <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
       <div className="bg-gray-800 text-white rounded-xl shadow-lg flex w-full max-w-5xl overflow-hidden">
         <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-2xl font-bold mb-2">Welcome back</h2>
+          <h2 className="text-2xl font-bold mb-2">Welcome back to NextHire</h2>
           <p className="text-sm text-gray-400 mb-6">
             Start your website in seconds. Don’t have an account?{" "}
             <NavLink to="/register" className="text-blue-400 hover:underline">
