@@ -39,7 +39,7 @@ const Banner = () => {
               Discover top talent or land your dream job faster, smarter, and
               easier with NextHire.
               <br className="hidden md:inline" />
-              Join thousands of professionals shaping their future today.
+              Join thousands of professionals shaping their future today. Lets go
             </p>
 
             <div className="flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4 mt-6">
@@ -49,7 +49,7 @@ const Banner = () => {
                 href="#"
                 className="px-6 py-3 text-lg font-semibold rounded bg-violet-600 hover:bg-violet-700 transition"
               >
-                Get Started
+                Get Started! 
               </motion.a>
             </div>
           </motion.div>

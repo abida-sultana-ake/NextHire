@@ -40,7 +40,7 @@ const Privacy = () => {
             </p>
 
             <p className="mt-6 text-sm text-gray-500">
-                Last updated: May 26, 2025
+                Last updated: May 17, 2025
             </p>
         </div>
         </div>
